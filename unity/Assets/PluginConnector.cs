@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PluginConnector : MonoBehaviour
@@ -9,16 +7,22 @@ public class PluginConnector : MonoBehaviour
 
     private uint _incValue = 13;
 
-    [DllImport("plugin")]
+    #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+    private const string plugin = "plugin";
+    #else
+    private const string plugin = "libplugin";
+    #endif
+
+    [DllImport(plugin)]
     private static extern void SetValueInPlugin(uint value);
 
-    [DllImport("plugin")]
+    [DllImport(plugin)]
     private static extern uint GetValueFromPlugin();
 
-    [DllImport("plugin")]
+    [DllImport(plugin)]
     private static extern void SetUnityFunction(FuncDelegate func);
 
-    [DllImport("plugin")]
+    [DllImport(plugin)]
     private static extern void CallUnityFunction();
 
     private static uint StaticIncrease(uint value)
