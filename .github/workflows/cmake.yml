@@ -11,11 +11,11 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build using Visual Studio
-      if: matrix.platform == windows-latest
+      if: matrix.platform == 'windows-latest'
       run: ./build_vs.bat
     - name: Build using Unix Makefiles
-      if: matrix.platform == ubungu-latest
+      if: matrix.platform == 'ubuntu-latest'
       run: ./build_make.sh
     - name: Build using Xcode
-      if: matrix.platform == macos-latest
+      if: matrix.platform == 'macos-latest'
       run: ./build_xcode.sh
