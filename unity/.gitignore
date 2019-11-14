@@ -71,3 +71,7 @@ crashlytics-build.properties
 # Additional config to ingore platform specific plugins
 /Assets/plugin.dll
 /Assets/plugin.dll.meta
+/Assets/libplugin.so
+/Assets/libplugin.so.meta
+/Assets/libplugin.dylib
+/Assets/libplugin.dylib.meta
