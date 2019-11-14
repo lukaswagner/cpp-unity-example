@@ -15,7 +15,11 @@ jobs:
       run: ./build_vs.bat
     - name: Build using Unix Makefiles
       if: matrix.platform == 'ubuntu-latest'
-      run: ./build_make.sh
+      run: |
+        chmod +x ./build_make.sh
+        ./build_make.sh
     - name: Build using Xcode
       if: matrix.platform == 'macos-latest'
-      run: ./build_xcode.sh
+      run: |
+        chmod +x ./build_xcode.sh
+        ./build_xcode.sh
